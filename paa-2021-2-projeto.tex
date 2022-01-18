@@ -1,0 +1,35 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{mathpartir}
+\usepackage[all]{xy}
+\usepackage[brazil]{babel}
+\usepackage[usenames]{color} 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{pdfsync}
+\usepackage{coqdoc}
+
+\title{Projeto e Análise de Algoritmos (2021-2)}
+\author{Nome1\\
+  \texttt{email1@xxxxx.com}
+  \and
+  Nome2\\
+  \texttt{email2@xxxxx.com}
+  \and
+  Nome3\\
+  \texttt{email3@xxxxx.com}  \and
+  Nome4\\
+  \texttt{email4@xxxxx.com}}
+
+\begin{document}
+\maketitle
+
+% coqdoc --latex --body-only paa_2021_2_coq.v; echo "$(tail -n +5 paa_2021_2_coq.tex)" > paa_2021_2_coq.tex
+
+\input{paa_2021_2_coq.tex}
+
+\bibliographystyle{plain}
+\bibliography{references.bib}
+
+\end{document}
