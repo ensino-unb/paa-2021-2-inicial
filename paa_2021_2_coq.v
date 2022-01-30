@@ -61,9 +61,6 @@ Fixpoint ord_insercao l :=
 
 Eval compute in (ord_insercao (3::2::1::nil)).
 
-Print list.
-
-
 
 
 Theorem correcao_ord_insercao: forall l, sorted (ord_insercao l) /\ permutacao l (ord_insercao l).
