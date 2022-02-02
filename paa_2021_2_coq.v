@@ -49,10 +49,27 @@ Proof.
            apply Nat.lt_le_incl.
            assumption.
         ** apply sorted_one.
-      * Admitted.
+      * intros n l' IH H.
+        simpl in *.
+        destruct (x <=? n) eqn:Hle'.
+        ** apply sorted_all.
+           *** apply Nat.leb_gt in Hle.
+               apply Nat.leb_le.
+               apply Nat.lt_le_incl.
+               assumption.
+           *** apply sorted_all.
+               **** assumption.
+               **** inversion H; subst.
+                    assumption.
+        ** inversion H; subst.
+           apply sorted_all.
+           *** assumption.
+           ***specialize (IH x).
+              rewrite Hle' in IH.
+              apply IH.
+           assumption.
+Qed.
 
-Print insere_preserva_ordem.
-  
 Fixpoint ord_insercao l :=
   match l with
   | nil => nil
@@ -61,6 +78,14 @@ Fixpoint ord_insercao l :=
 
 Eval compute in (ord_insercao (3::2::1::nil)).
 
-
+Lemma ord_insercao_preserva_ordem: forall l, sorted (ord_insercao l).
+Proof.
+  induction l.
+  - simpl.
+    apply sorted_nil.
+  - simpl.
+    apply insere_preserva_ordem.
+    apply IHl.
+Qed.
 
 Theorem correcao_ord_insercao: forall l, sorted (ord_insercao l) /\ permutacao l (ord_insercao l).
