@@ -216,3 +216,12 @@ Proof.
     apply IHl.
 Qed.
 
+(** * Equivalência entre Permutation e perm' *)
+
+(** Exercício: (4 pontos) *)
+Lemma Permutation_implica_perm': forall l l', Permutation l l' -> perm' l l'.
+Proof.
+  induction 1.
+(*  intros l l' H.
+  induction H. *)
+  Admitted.
