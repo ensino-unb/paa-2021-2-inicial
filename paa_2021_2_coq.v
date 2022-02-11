@@ -26,6 +26,7 @@ Inductive sorted: list nat -> Prop :=
 | sorted_all: forall l x y, x <=? y = true -> sorted (y::l) -> sorted (x::y::l).
 
 Lemma insere_preserva_ordem: forall l x, sorted l -> sorted (insere x l).
+(* begin hide *)
 Proof.
   induction l. (* A prova é por indução em l... *)
   - intro x. 
@@ -69,7 +70,7 @@ Proof.
               apply IH.
            assumption.
 Qed.
-
+(* end hide *)
 Fixpoint ord_insercao l :=
   match l with
   | nil => nil
@@ -218,10 +219,88 @@ Qed.
 
 (** * Equivalência entre Permutation e perm' *)
 
-(** Exercício: (4 pontos) *)
+(** Exercício: (4 pontos) prazo: 23h59 da segunda, dia 14. *)
 Lemma Permutation_implica_perm': forall l l', Permutation l l' -> perm' l l'.
 Proof.
   induction 1.
 (*  intros l l' H.
   induction H. *)
+Admitted.
+
+(** * Análise da complexidade do algoritmo de ordenação por inserção *)
+
+Fixpoint T_insere (x: nat) (l: list nat) : nat :=
+match l with
+| nil => 0
+| h :: tl => if (x <=? h) then 1 else S (T_insere x tl)
+end.
+
+Require Import Lia.
+
+Lemma T_insere_linear: forall l x, T_insere x l <= length l.
+Proof.
+  induction l.
+  - intros x.
+    simpl.
+    auto.
+  - intros x.
+    simpl.
+    destruct (x <=? a).
+    + apply le_n_S.
+      lia.
+    + apply le_n_S.
+      apply IHl.
+Qed.
+
+Fixpoint T_is (l: list nat) : nat :=
+match l with
+| nil => 0
+| h::tl => (T_is tl) + (T_insere h (ord_insercao tl))
+end.
+
+Lemma ord_insercao_length: forall l, length (ord_insercao l) = length l.
+Proof.
+  Admitted.
+
+Lemma T_is_quad: forall l, T_is l <= (length l)*(length l).
+Proof.
+  induction l.
+  - simpl.
+    auto.
+  - simpl.
+    apply le_trans with ((length l)*(length l) + length (ord_insercao l)).
+    + apply Nat.add_le_mono.
+      * apply IHl.
+      * apply T_insere_linear.
+    + rewrite ord_insercao_length.
+      lia.
+Qed.
+
+(** ** Análise do pior caso *)
+
+Fixpoint Tw_insere (n:nat) :=
+  match n with
+  | 0 => 0
+  | S k => S (Tw_insere k)
+  end.
+
+Lemma Tw_insere_linear: forall n, Tw_insere n = n.
+Proof.
+  induction n.
+  - simpl.
+    reflexivity.
+  - simpl.
+    rewrite IHn.
+    reflexivity.
+Qed.
+
+Fixpoint Tw_is (n: nat) :=
+  match n with
+  | 0 => 0
+  | S k => k + Tw_is k
+  end.
+
+(* Exercício (2 pontos)  - prazo: 23h59 de 21/02 *)
+Theorem Tw_is_quad: forall n, 2 * Tw_is (S n) = n * (S n).
+Proof.
   Admitted.

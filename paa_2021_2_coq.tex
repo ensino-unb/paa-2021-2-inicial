@@ -1,0 +1,385 @@
+\section{Projeto e Análise de Algoritmos}
+
+
+
+\subsection{O algoritmo de ordenação por inserção}
+
+
+
+\begin{coqdoccode}
+\coqdocemptyline
+\coqdocnoindent
+\coqdockw{Require} \coqdockw{Import} \coqdocvar{List}.\coqdoceol
+\coqdocnoindent
+\coqdockw{Require} \coqdockw{Import} \coqdocvar{Arith}.\coqdoceol
+\coqdocemptyline
+\end{coqdoccode}
+   Definição da função de inserção
+
+\begin{coqdoccode}
+\coqdocemptyline
+\coqdocnoindent
+\coqdockw{Fixpoint} \coqdocvar{insere} \coqdocvar{x} \coqdocvar{l} :=\coqdoceol
+\coqdocindent{1.00em}
+\coqdockw{match} \coqdocvar{l} \coqdockw{with}\coqdoceol
+\coqdocindent{1.00em}
+\ensuremath{|} \coqdocvar{nil} \ensuremath{\Rightarrow} \coqdocvar{x} :: \coqdocvar{nil} \coqdoceol
+\coqdocindent{1.00em}
+\ensuremath{|} \coqdocvar{h} :: \coqdocvar{tl} \ensuremath{\Rightarrow} \coqdockw{if} (\coqdocvar{x} <=? \coqdocvar{h}) \coqdockw{then} \coqdocvar{x} :: \coqdocvar{l} \coqdockw{else} \coqdocvar{h} :: (\coqdocvar{insere} \coqdocvar{x} \coqdocvar{tl})\coqdoceol
+\coqdocindent{1.00em}
+\coqdockw{end}.\coqdoceol
+\coqdocemptyline
+\coqdocnoindent
+\coqdockw{Eval} \coqdoctac{compute} \coqdoctac{in} (\coqdocvar{insere} 3 (1::2::\coqdocvar{nil})).\coqdoceol
+\coqdocemptyline
+\coqdocnoindent
+\coqdockw{Eval} \coqdoctac{compute} \coqdoctac{in} (\coqdocvar{insere} 3 (2::1::\coqdocvar{nil})).\coqdoceol
+\coqdocemptyline
+\coqdocnoindent
+\coqdockw{Inductive} \coqdocvar{sorted}: \coqdocvar{list} \coqdocvar{nat} \ensuremath{\rightarrow} \coqdockw{Prop} :=\coqdoceol
+\coqdocnoindent
+\ensuremath{|} \coqdocvar{sorted\_nil}: \coqdocvar{sorted} \coqdocvar{nil}\coqdoceol
+\coqdocnoindent
+\ensuremath{|} \coqdocvar{sorted\_one}: \coqdockw{\ensuremath{\forall}} \coqdocvar{x}, \coqdocvar{sorted} (\coqdocvar{x}::\coqdocvar{nil})\coqdoceol
+\coqdocnoindent
+\ensuremath{|} \coqdocvar{sorted\_all}: \coqdockw{\ensuremath{\forall}} \coqdocvar{l} \coqdocvar{x} \coqdocvar{y}, \coqdocvar{x} <=? \coqdocvar{y} = \coqdocvar{true} \ensuremath{\rightarrow} \coqdocvar{sorted} (\coqdocvar{y}::\coqdocvar{l}) \ensuremath{\rightarrow} \coqdocvar{sorted} (\coqdocvar{x}::\coqdocvar{y}::\coqdocvar{l}).\coqdoceol
+\coqdocemptyline
+\coqdocnoindent
+\coqdockw{Lemma} \coqdocvar{insere\_preserva\_ordem}: \coqdockw{\ensuremath{\forall}} \coqdocvar{l} \coqdocvar{x}, \coqdocvar{sorted} \coqdocvar{l} \ensuremath{\rightarrow} \coqdocvar{sorted} (\coqdocvar{insere} \coqdocvar{x} \coqdocvar{l}).\coqdoceol
+\coqdocnoindent
+\coqdockw{Fixpoint} \coqdocvar{ord\_insercao} \coqdocvar{l} :=\coqdoceol
+\coqdocindent{1.00em}
+\coqdockw{match} \coqdocvar{l} \coqdockw{with}\coqdoceol
+\coqdocindent{1.00em}
+\ensuremath{|} \coqdocvar{nil} \ensuremath{\Rightarrow} \coqdocvar{nil}\coqdoceol
+\coqdocindent{1.00em}
+\ensuremath{|} \coqdocvar{h} :: \coqdocvar{tl} \ensuremath{\Rightarrow} \coqdocvar{insere} \coqdocvar{h} (\coqdocvar{ord\_insercao} \coqdocvar{tl})\coqdoceol
+\coqdocindent{1.00em}
+\coqdockw{end}.\coqdoceol
+\coqdocemptyline
+\coqdocnoindent
+\coqdockw{Eval} \coqdoctac{compute} \coqdoctac{in} (\coqdocvar{ord\_insercao} (3::2::1::\coqdocvar{nil})).\coqdoceol
+\coqdocemptyline
+\coqdocnoindent
+\coqdockw{Lemma} \coqdocvar{ord\_insercao\_preserva\_ordem}: \coqdockw{\ensuremath{\forall}} \coqdocvar{l}, \coqdocvar{sorted} (\coqdocvar{ord\_insercao} \coqdocvar{l}).\coqdoceol
+\coqdocnoindent
+\coqdockw{Proof}.\coqdoceol
+\coqdocindent{1.00em}
+\coqdoctac{induction} \coqdocvar{l}.\coqdoceol
+\coqdocindent{1.00em}
+- \coqdoctac{simpl}.\coqdoceol
+\coqdocindent{2.00em}
+\coqdoctac{apply} \coqdocvar{sorted\_nil}.\coqdoceol
+\coqdocindent{1.00em}
+- \coqdoctac{simpl}.\coqdoceol
+\coqdocindent{2.00em}
+\coqdoctac{apply} \coqdocvar{insere\_preserva\_ordem}.\coqdoceol
+\coqdocindent{2.00em}
+\coqdoctac{apply} \coqdocvar{IHl}.\coqdoceol
+\coqdocnoindent
+\coqdockw{Qed}.\coqdoceol
+\coqdocemptyline
+\coqdocemptyline
+\coqdocnoindent
+\coqdockw{Require} \coqdockw{Import} \coqdocvar{Permutation}.\coqdoceol
+\coqdocnoindent
+\coqdockw{Print} \coqdocvar{Permutation}.\coqdoceol
+\coqdocemptyline
+\coqdocnoindent
+\coqdockw{Lemma} \coqdocvar{Permutation\_insere}: \coqdockw{\ensuremath{\forall}} \coqdocvar{l} \coqdocvar{a}, \coqdocvar{Permutation} (\coqdocvar{a} :: \coqdocvar{l}) (\coqdocvar{insere} \coqdocvar{a} \coqdocvar{l}).\coqdoceol
+\coqdocnoindent
+\coqdockw{Proof}.\coqdoceol
+\coqdocindent{1.00em}
+\coqdoctac{induction} \coqdocvar{l}.\coqdoceol
+\coqdocindent{1.00em}
+- \coqdoctac{intro} \coqdocvar{a}.\coqdoceol
+\coqdocindent{2.00em}
+\coqdoctac{simpl}.\coqdoceol
+\coqdocindent{2.00em}
+\coqdoctac{apply} \coqdocvar{Permutation\_refl}.\coqdoceol
+\coqdocindent{1.00em}
+- \coqdoctac{intros} \coqdocvar{a'}.\coqdoceol
+\coqdocindent{2.00em}
+\coqdoctac{simpl}.\coqdoceol
+\coqdocindent{2.00em}
+\coqdoctac{destruct} (\coqdocvar{a'} <=? \coqdocvar{a}).\coqdoceol
+\coqdocindent{2.00em}
++ \coqdoctac{apply} \coqdocvar{Permutation\_refl}.\coqdoceol
+\coqdocindent{2.00em}
++ \coqdoctac{apply} \coqdocvar{perm\_trans} \coqdockw{with} (\coqdocvar{a}::\coqdocvar{a'}::\coqdocvar{l}).\coqdoceol
+\coqdocindent{3.00em}
+\ensuremath{\times} \coqdoctac{apply} \coqdocvar{perm\_swap}.\coqdoceol
+\coqdocindent{3.00em}
+\ensuremath{\times} \coqdoctac{apply} \coqdocvar{perm\_skip}.\coqdoceol
+\coqdocindent{4.00em}
+\coqdoctac{apply} \coqdocvar{IHl}.\coqdoceol
+\coqdocnoindent
+\coqdockw{Qed}.\coqdoceol
+\coqdocemptyline
+\coqdocnoindent
+\coqdockw{Lemma} \coqdocvar{Permutation\_insere\_diff}: \coqdockw{\ensuremath{\forall}} \coqdocvar{l} \coqdocvar{l'} \coqdocvar{a}, \coqdocvar{Permutation} \coqdocvar{l} \coqdocvar{l'} \ensuremath{\rightarrow} \coqdocvar{Permutation} (\coqdocvar{a} :: \coqdocvar{l}) (\coqdocvar{insere} \coqdocvar{a} \coqdocvar{l'}).\coqdoceol
+\coqdocnoindent
+\coqdockw{Proof}.\coqdoceol
+\coqdocindent{1.00em}
+\coqdoctac{intros} \coqdocvar{l} \coqdocvar{l'} \coqdocvar{a} \coqdocvar{H}.\coqdoceol
+\coqdocindent{1.00em}
+\coqdoctac{rewrite} \coqdocvar{H}.\coqdoceol
+\coqdocindent{1.00em}
+\coqdoctac{apply} \coqdocvar{Permutation\_insere}.\coqdoceol
+\coqdocnoindent
+\coqdockw{Qed}.\coqdoceol
+\coqdocemptyline
+\coqdocnoindent
+\coqdockw{Lemma} \coqdocvar{ord\_insercao\_Permutation}: \coqdockw{\ensuremath{\forall}} \coqdocvar{l}, \coqdocvar{Permutation} \coqdocvar{l} (\coqdocvar{ord\_insercao} \coqdocvar{l}).\coqdoceol
+\coqdocnoindent
+\coqdockw{Proof}.\coqdoceol
+\coqdocindent{1.00em}
+\coqdoctac{induction} \coqdocvar{l}.\coqdoceol
+\coqdocindent{1.00em}
+- \coqdoctac{simpl}.\coqdoceol
+\coqdocindent{2.00em}
+\coqdoctac{apply} \coqdocvar{perm\_nil}.\coqdoceol
+\coqdocindent{1.00em}
+- \coqdoctac{simpl}.\coqdoceol
+\coqdocindent{2.00em}
+\coqdoctac{apply} \coqdocvar{Permutation\_insere\_diff}.\coqdoceol
+\coqdocindent{2.00em}
+\coqdoctac{apply} \coqdocvar{IHl}.\coqdoceol
+\coqdocnoindent
+\coqdockw{Qed}.\coqdoceol
+\coqdocemptyline
+\coqdocnoindent
+\coqdockw{Theorem} \coqdocvar{correcao\_ord\_insercao}: \coqdockw{\ensuremath{\forall}} \coqdocvar{l}, \coqdocvar{sorted} (\coqdocvar{ord\_insercao} \coqdocvar{l}) \ensuremath{\land} \coqdocvar{Permutation} \coqdocvar{l} (\coqdocvar{ord\_insercao} \coqdocvar{l}).\coqdoceol
+\coqdocnoindent
+\coqdockw{Proof}.\coqdoceol
+\coqdocindent{1.00em}
+\coqdoctac{intro} \coqdocvar{l}; \coqdoctac{split}.\coqdoceol
+\coqdocindent{1.00em}
+- \coqdoctac{apply} \coqdocvar{ord\_insercao\_preserva\_ordem}.\coqdoceol
+\coqdocindent{1.00em}
+- \coqdoctac{apply} \coqdocvar{ord\_insercao\_Permutation}.\coqdoceol
+\coqdocnoindent
+\coqdockw{Qed}.\coqdoceol
+\coqdocemptyline
+\coqdocnoindent
+\coqdockw{Fixpoint} \coqdocvar{num\_oc} \coqdocvar{x} \coqdocvar{l} := \coqdockw{match} \coqdocvar{l} \coqdockw{with}\coqdoceol
+\coqdocindent{11.50em}
+\ensuremath{|} \coqdocvar{nil} \ensuremath{\Rightarrow} 0\coqdoceol
+\coqdocindent{11.50em}
+\ensuremath{|} \coqdocvar{h}::\coqdocvar{tl} \ensuremath{\Rightarrow} \coqdockw{if} (\coqdocvar{x} =? \coqdocvar{h}) \coqdockw{then} \coqdocvar{S}(\coqdocvar{num\_oc} \coqdocvar{x} \coqdocvar{tl}) \coqdockw{else} \coqdocvar{num\_oc} \coqdocvar{x} \coqdocvar{tl}\coqdoceol
+\coqdocindent{11.50em}
+\coqdockw{end}.\coqdoceol
+\coqdocemptyline
+\coqdocnoindent
+\coqdockw{Eval} \coqdoctac{compute} \coqdoctac{in} (\coqdocvar{num\_oc} 2 (1::2::3::2::2::\coqdocvar{nil})).\coqdoceol
+\coqdocemptyline
+\coqdocnoindent
+\coqdockw{Definition} \coqdocvar{perm'} \coqdocvar{l} \coqdocvar{l'} := \coqdockw{\ensuremath{\forall}} \coqdocvar{x}, \coqdocvar{num\_oc} \coqdocvar{x} \coqdocvar{l} = \coqdocvar{num\_oc} \coqdocvar{x} \coqdocvar{l'}.\coqdoceol
+\coqdocemptyline
+\coqdocnoindent
+\coqdockw{Lemma} \coqdocvar{num\_oc\_insere}: \coqdockw{\ensuremath{\forall}} \coqdocvar{l} \coqdocvar{l'} \coqdocvar{x} \coqdocvar{a}, \coqdocvar{perm'} \coqdocvar{l} \coqdocvar{l'} \ensuremath{\rightarrow} (\coqdockw{if} \coqdocvar{x} =? \coqdocvar{a} \coqdockw{then} \coqdocvar{S} (\coqdocvar{num\_oc} \coqdocvar{x} \coqdocvar{l}) \coqdockw{else} \coqdocvar{num\_oc} \coqdocvar{x} \coqdocvar{l}) =\coqdoceol
+\coqdocindent{1.00em}
+\coqdocvar{num\_oc} \coqdocvar{x} (\coqdocvar{insere} \coqdocvar{a} \coqdocvar{l'}).\coqdoceol
+\coqdocnoindent
+\coqdockw{Proof}.\coqdoceol
+\coqdocnoindent
+\coqdocvar{Admitted}.\coqdoceol
+\coqdocemptyline
+\coqdocemptyline
+\coqdocnoindent
+\coqdockw{Lemma} \coqdocvar{ord\_insercao\_perm'}: \coqdockw{\ensuremath{\forall}} \coqdocvar{l}, \coqdocvar{perm'} \coqdocvar{l} (\coqdocvar{ord\_insercao} \coqdocvar{l}).\coqdoceol
+\coqdocnoindent
+\coqdockw{Proof}.\coqdoceol
+\coqdocindent{1.00em}
+\coqdoctac{induction} \coqdocvar{l}.\coqdoceol
+\coqdocindent{1.00em}
+- \coqdoctac{simpl}.\coqdoceol
+\coqdocindent{2.00em}
+\coqdoctac{unfold} \coqdocvar{perm'}.\coqdoceol
+\coqdocindent{2.00em}
+\coqdoctac{intro} \coqdocvar{x}.\coqdoceol
+\coqdocindent{2.00em}
+\coqdoctac{reflexivity}.\coqdoceol
+\coqdocindent{1.00em}
+- \coqdoctac{simpl}.\coqdoceol
+\coqdocindent{2.00em}
+\coqdoctac{unfold} \coqdocvar{perm'} \coqdoctac{in} *.\coqdoceol
+\coqdocindent{2.00em}
+\coqdoctac{intro} \coqdocvar{x}.\coqdoceol
+\coqdocindent{2.00em}
+\coqdoctac{simpl}.\coqdoceol
+\coqdocindent{2.00em}
+\coqdoctac{apply} \coqdocvar{num\_oc\_insere}.\coqdoceol
+\coqdocindent{2.00em}
+\coqdoctac{unfold} \coqdocvar{perm'}.\coqdoceol
+\coqdocindent{2.00em}
+\coqdoctac{intro} \coqdocvar{x'}.\coqdoceol
+\coqdocindent{2.00em}
+\coqdoctac{apply} \coqdocvar{IHl}.\coqdoceol
+\coqdocnoindent
+\coqdockw{Qed}.\coqdoceol
+\coqdocemptyline
+\end{coqdoccode}
+\section{Equivalência entre Permutation e perm'}
+
+
+
+ Exercício: (4 pontos) prazo: 23h59 da segunda, dia 14. 
+\begin{coqdoccode}
+\coqdocnoindent
+\coqdockw{Lemma} \coqdocvar{Permutation\_implica\_perm'}: \coqdockw{\ensuremath{\forall}} \coqdocvar{l} \coqdocvar{l'}, \coqdocvar{Permutation} \coqdocvar{l} \coqdocvar{l'} \ensuremath{\rightarrow} \coqdocvar{perm'} \coqdocvar{l} \coqdocvar{l'}.\coqdoceol
+\coqdocnoindent
+\coqdockw{Proof}.\coqdoceol
+\coqdocindent{1.00em}
+\coqdoctac{induction} 1.\coqdoceol
+\coqdocnoindent
+\coqdocvar{Admitted}.\coqdoceol
+\coqdocemptyline
+\end{coqdoccode}
+\section{Análise da complexidade do algoritmo de ordenação por inserção}
+
+
+\begin{coqdoccode}
+\coqdocemptyline
+\coqdocnoindent
+\coqdockw{Fixpoint} \coqdocvar{T\_insere} (\coqdocvar{x}: \coqdocvar{nat}) (\coqdocvar{l}: \coqdocvar{list} \coqdocvar{nat}) : \coqdocvar{nat} :=\coqdoceol
+\coqdocnoindent
+\coqdockw{match} \coqdocvar{l} \coqdockw{with}\coqdoceol
+\coqdocnoindent
+\ensuremath{|} \coqdocvar{nil} \ensuremath{\Rightarrow} 0\coqdoceol
+\coqdocnoindent
+\ensuremath{|} \coqdocvar{h} :: \coqdocvar{tl} \ensuremath{\Rightarrow} \coqdockw{if} (\coqdocvar{x} <=? \coqdocvar{h}) \coqdockw{then} 1 \coqdockw{else} \coqdocvar{S} (\coqdocvar{T\_insere} \coqdocvar{x} \coqdocvar{tl})\coqdoceol
+\coqdocnoindent
+\coqdockw{end}.\coqdoceol
+\coqdocemptyline
+\coqdocnoindent
+\coqdockw{Require} \coqdockw{Import} \coqdocvar{Lia}.\coqdoceol
+\coqdocemptyline
+\coqdocnoindent
+\coqdockw{Lemma} \coqdocvar{T\_insere\_linear}: \coqdockw{\ensuremath{\forall}} \coqdocvar{l} \coqdocvar{x}, \coqdocvar{T\_insere} \coqdocvar{x} \coqdocvar{l} \ensuremath{\le} \coqdocvar{length} \coqdocvar{l}.\coqdoceol
+\coqdocnoindent
+\coqdockw{Proof}.\coqdoceol
+\coqdocindent{1.00em}
+\coqdoctac{induction} \coqdocvar{l}.\coqdoceol
+\coqdocindent{1.00em}
+- \coqdoctac{intros} \coqdocvar{x}.\coqdoceol
+\coqdocindent{2.00em}
+\coqdoctac{simpl}.\coqdoceol
+\coqdocindent{2.00em}
+\coqdoctac{auto}.\coqdoceol
+\coqdocindent{1.00em}
+- \coqdoctac{intros} \coqdocvar{x}.\coqdoceol
+\coqdocindent{2.00em}
+\coqdoctac{simpl}.\coqdoceol
+\coqdocindent{2.00em}
+\coqdoctac{destruct} (\coqdocvar{x} <=? \coqdocvar{a}).\coqdoceol
+\coqdocindent{2.00em}
++ \coqdoctac{apply} \coqdocvar{le\_n\_S}.\coqdoceol
+\coqdocindent{3.00em}
+\coqdocvar{lia}.\coqdoceol
+\coqdocindent{2.00em}
++ \coqdoctac{apply} \coqdocvar{le\_n\_S}.\coqdoceol
+\coqdocindent{3.00em}
+\coqdoctac{apply} \coqdocvar{IHl}.\coqdoceol
+\coqdocnoindent
+\coqdockw{Qed}.\coqdoceol
+\coqdocemptyline
+\coqdocnoindent
+\coqdockw{Fixpoint} \coqdocvar{T\_is} (\coqdocvar{l}: \coqdocvar{list} \coqdocvar{nat}) : \coqdocvar{nat} :=\coqdoceol
+\coqdocnoindent
+\coqdockw{match} \coqdocvar{l} \coqdockw{with}\coqdoceol
+\coqdocnoindent
+\ensuremath{|} \coqdocvar{nil} \ensuremath{\Rightarrow} 0\coqdoceol
+\coqdocnoindent
+\ensuremath{|} \coqdocvar{h}::\coqdocvar{tl} \ensuremath{\Rightarrow} (\coqdocvar{T\_is} \coqdocvar{tl}) + (\coqdocvar{T\_insere} \coqdocvar{h} (\coqdocvar{ord\_insercao} \coqdocvar{tl}))\coqdoceol
+\coqdocnoindent
+\coqdockw{end}.\coqdoceol
+\coqdocemptyline
+\coqdocnoindent
+\coqdockw{Lemma} \coqdocvar{ord\_insercao\_length}: \coqdockw{\ensuremath{\forall}} \coqdocvar{l}, \coqdocvar{length} (\coqdocvar{ord\_insercao} \coqdocvar{l}) = \coqdocvar{length} \coqdocvar{l}.\coqdoceol
+\coqdocnoindent
+\coqdockw{Proof}.\coqdoceol
+\coqdocindent{1.00em}
+\coqdocvar{Admitted}.\coqdoceol
+\coqdocemptyline
+\coqdocnoindent
+\coqdockw{Lemma} \coqdocvar{T\_is\_quad}: \coqdockw{\ensuremath{\forall}} \coqdocvar{l}, \coqdocvar{T\_is} \coqdocvar{l} \ensuremath{\le} (\coqdocvar{length} \coqdocvar{l})*(\coqdocvar{length} \coqdocvar{l}).\coqdoceol
+\coqdocnoindent
+\coqdockw{Proof}.\coqdoceol
+\coqdocindent{1.00em}
+\coqdoctac{induction} \coqdocvar{l}.\coqdoceol
+\coqdocindent{1.00em}
+- \coqdoctac{simpl}.\coqdoceol
+\coqdocindent{2.00em}
+\coqdoctac{auto}.\coqdoceol
+\coqdocindent{1.00em}
+- \coqdoctac{simpl}.\coqdoceol
+\coqdocindent{2.00em}
+\coqdoctac{apply} \coqdocvar{le\_trans} \coqdockw{with} ((\coqdocvar{length} \coqdocvar{l})*(\coqdocvar{length} \coqdocvar{l}) + \coqdocvar{length} (\coqdocvar{ord\_insercao} \coqdocvar{l})).\coqdoceol
+\coqdocindent{2.00em}
++ \coqdoctac{apply} \coqdocvar{Nat.add\_le\_mono}.\coqdoceol
+\coqdocindent{3.00em}
+\ensuremath{\times} \coqdoctac{apply} \coqdocvar{IHl}.\coqdoceol
+\coqdocindent{3.00em}
+\ensuremath{\times} \coqdoctac{apply} \coqdocvar{T\_insere\_linear}.\coqdoceol
+\coqdocindent{2.00em}
++ \coqdoctac{rewrite} \coqdocvar{ord\_insercao\_length}.\coqdoceol
+\coqdocindent{3.00em}
+\coqdocvar{lia}.\coqdoceol
+\coqdocnoindent
+\coqdockw{Qed}.\coqdoceol
+\coqdocemptyline
+\end{coqdoccode}
+\subsection{Análise do pior caso}
+
+
+\begin{coqdoccode}
+\coqdocemptyline
+\coqdocnoindent
+\coqdockw{Fixpoint} \coqdocvar{Tw\_insere} (\coqdocvar{n}:\coqdocvar{nat}) :=\coqdoceol
+\coqdocindent{1.00em}
+\coqdockw{match} \coqdocvar{n} \coqdockw{with}\coqdoceol
+\coqdocindent{1.00em}
+\ensuremath{|} 0 \ensuremath{\Rightarrow} 0\coqdoceol
+\coqdocindent{1.00em}
+\ensuremath{|} \coqdocvar{S} \coqdocvar{k} \ensuremath{\Rightarrow} \coqdocvar{S} (\coqdocvar{Tw\_insere} \coqdocvar{k})\coqdoceol
+\coqdocindent{1.00em}
+\coqdockw{end}.\coqdoceol
+\coqdocemptyline
+\coqdocnoindent
+\coqdockw{Lemma} \coqdocvar{Tw\_insere\_linear}: \coqdockw{\ensuremath{\forall}} \coqdocvar{n}, \coqdocvar{Tw\_insere} \coqdocvar{n} = \coqdocvar{n}.\coqdoceol
+\coqdocnoindent
+\coqdockw{Proof}.\coqdoceol
+\coqdocindent{1.00em}
+\coqdoctac{induction} \coqdocvar{n}.\coqdoceol
+\coqdocindent{1.00em}
+- \coqdoctac{simpl}.\coqdoceol
+\coqdocindent{2.00em}
+\coqdoctac{reflexivity}.\coqdoceol
+\coqdocindent{1.00em}
+- \coqdoctac{simpl}.\coqdoceol
+\coqdocindent{2.00em}
+\coqdoctac{rewrite} \coqdocvar{IHn}.\coqdoceol
+\coqdocindent{2.00em}
+\coqdoctac{reflexivity}.\coqdoceol
+\coqdocnoindent
+\coqdockw{Qed}.\coqdoceol
+\coqdocemptyline
+\coqdocnoindent
+\coqdockw{Fixpoint} \coqdocvar{Tw\_is} (\coqdocvar{n}: \coqdocvar{nat}) :=\coqdoceol
+\coqdocindent{1.00em}
+\coqdockw{match} \coqdocvar{n} \coqdockw{with}\coqdoceol
+\coqdocindent{1.00em}
+\ensuremath{|} 0 \ensuremath{\Rightarrow} 0\coqdoceol
+\coqdocindent{1.00em}
+\ensuremath{|} \coqdocvar{S} \coqdocvar{k} \ensuremath{\Rightarrow} \coqdocvar{k} + \coqdocvar{Tw\_is} \coqdocvar{k}\coqdoceol
+\coqdocindent{1.00em}
+\coqdockw{end}.\coqdoceol
+\coqdocemptyline
+\coqdocnoindent
+\coqdockw{Lemma} \coqdocvar{Tw\_is\_quad}: \coqdockw{\ensuremath{\forall}} \coqdocvar{n}, 2 \ensuremath{\times} \coqdocvar{Tw\_is} (\coqdocvar{S} \coqdocvar{n}) = \coqdocvar{n} \ensuremath{\times} (\coqdocvar{S} \coqdocvar{n}).\coqdoceol
+\coqdocnoindent
+\coqdockw{Proof}.\coqdoceol
+\coqdocindent{1.00em}
+\coqdocvar{Admitted}.\coqdoceol
+\end{coqdoccode}
