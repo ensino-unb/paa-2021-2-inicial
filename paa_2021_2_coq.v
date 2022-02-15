@@ -138,7 +138,6 @@ Qed.
 Require Import Permutation.
 Print Permutation.
 
-
 Lemma Permutation_insere: forall l a, Permutation (a :: l) (insere a l).
 Proof.  
   induction l.
@@ -227,6 +226,38 @@ Proof.
   induction H. *)
 Admitted.
 
+(** Desafio: pontuação extra: 10 pontos - primeiro grupo. Prazo: até 13 de março de 2022. *)
+Lemma perm'_nil: forall l, perm' nil l -> l = nil.
+Proof.
+  Admitted.
+
+(* Ideia que pode não ser a melhor. *)
+Lemma perm'_exists: forall l l' a, perm' (a :: l) l' -> exists l1 l2, l' = l1++a::l2.
+Proof.
+  Admitted.
+  
+Lemma perm'_implica_Permutation: forall l l', perm' l l' -> Permutation l l'.
+Proof.
+  induction l.
+  - intros l' H.
+    apply perm'_nil in H.
+    subst.
+    apply perm_nil.
+  - intros l' H.
+    assert (H' := H). (* cópia da hipótese H no contexto *)
+    apply perm'_exists in H'.
+    destruct H' as [l1 [l2 H']].
+    subst.
+Admitted.
+
+Theorem Permutation_equiv_perm': forall l l', Permutation l l' <-> perm' l l'.
+Proof.
+  intros l l'.
+  split.
+  - apply Permutation_implica_perm'.
+  - apply perm'_implica_Permutation.
+Qed.
+    
 (** * Análise da complexidade do algoritmo de ordenação por inserção *)
 
 Fixpoint T_insere (x: nat) (l: list nat) : nat :=
