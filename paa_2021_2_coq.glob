@@ -1,0 +1,455 @@
+DIGEST 1292bfcfda1956ca11e9a5537686f351
+Fpaa_2021_2_coq
+R112:115 Coq.Lists.List <> <> lib
+R133:137 Coq.Arith.Arith <> <> lib
+def 199:204 <> insere
+binder 206:206 <> x:1
+binder 208:208 <> l:2
+R221:221 paa_2021_2_coq <> l:2 var
+R232:234 Coq.Init.Datatypes <> nil constr
+R240:243 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R239:239 paa_2021_2_coq <> x:1 var
+R244:246 Coq.Init.Datatypes <> nil constr
+R254:257 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R269:273 Coq.Arith.PeanoNat <> ::nat_scope:x_'<=?'_x not
+R268:268 paa_2021_2_coq <> x:1 var
+R295:299 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R311:311 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R300:305 paa_2021_2_coq <> insere:3 def
+R307:307 paa_2021_2_coq <> x:1 var
+R283:286 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R282:282 paa_2021_2_coq <> x:1 var
+R287:287 paa_2021_2_coq <> l:2 var
+R338:343 paa_2021_2_coq <> insere def
+R349:350 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R352:353 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R354:356 Coq.Init.Datatypes <> nil constr
+R379:384 paa_2021_2_coq <> insere def
+R390:391 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R393:394 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R395:397 Coq.Init.Datatypes <> nil constr
+ind 413:418 <> sorted
+constr 443:452 <> sorted_nil
+constr 468:477 <> sorted_one
+constr 508:517 <> sorted_all
+R429:432 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R421:424 Coq.Init.Datatypes <> list ind
+R426:428 Coq.Init.Datatypes <> nat ind
+R455:460 paa_2021_2_coq <> sorted:5 ind
+R462:464 Coq.Init.Datatypes <> nil constr
+binder 487:487 <> x:7
+R490:495 paa_2021_2_coq <> sorted:5 ind
+R499:500 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R498:498 paa_2021_2_coq <> x:7 var
+R501:503 Coq.Init.Datatypes <> nil constr
+binder 527:527 <> l:8
+binder 529:529 <> x:9
+binder 531:531 <> y:10
+R548:551 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R541:543 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R535:539 Coq.Arith.PeanoNat <> ::nat_scope:x_'<=?'_x not
+R534:534 paa_2021_2_coq <> x:9 var
+R540:540 paa_2021_2_coq <> y:10 var
+R544:547 Coq.Init.Datatypes <> true constr
+R565:568 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R552:557 paa_2021_2_coq <> sorted:5 ind
+R561:562 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R560:560 paa_2021_2_coq <> y:10 var
+R563:563 paa_2021_2_coq <> l:8 var
+R569:574 paa_2021_2_coq <> sorted:5 ind
+R578:579 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R577:577 paa_2021_2_coq <> x:9 var
+R581:582 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R580:580 paa_2021_2_coq <> y:10 var
+R583:583 paa_2021_2_coq <> l:8 var
+prf 594:614 <> insere_preserva_ordem
+binder 624:624 <> l:11
+binder 626:626 <> x:12
+R637:640 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R629:634 paa_2021_2_coq <> sorted ind
+R636:636 paa_2021_2_coq <> l:11 var
+R641:646 paa_2021_2_coq <> sorted ind
+R649:654 paa_2021_2_coq <> insere def
+R656:656 paa_2021_2_coq <> x:12 var
+R658:658 paa_2021_2_coq <> l:11 var
+R789:798 paa_2021_2_coq <> sorted_one constr
+R789:798 paa_2021_2_coq <> sorted_one constr
+R843:847 Coq.Arith.PeanoNat <> ::nat_scope:x_'<=?'_x not
+R843:847 Coq.Arith.PeanoNat <> ::nat_scope:x_'<=?'_x not
+R872:881 paa_2021_2_coq <> sorted_all constr
+R872:881 paa_2021_2_coq <> sorted_all constr
+R1024:1033 paa_2021_2_coq <> sorted_all constr
+R1024:1033 paa_2021_2_coq <> sorted_all constr
+R1076:1085 Coq.Arith.PeanoNat Nat leb_gt thm
+R1076:1085 Coq.Arith.PeanoNat Nat leb_gt thm
+R1112:1121 Coq.Arith.PeanoNat Nat leb_le thm
+R1112:1121 Coq.Arith.PeanoNat Nat leb_le thm
+R1141:1154 Coq.Arith.PeanoNat Nat lt_le_incl thm
+R1141:1154 Coq.Arith.PeanoNat Nat lt_le_incl thm
+R1197:1206 paa_2021_2_coq <> sorted_one constr
+R1197:1206 paa_2021_2_coq <> sorted_one constr
+R1274:1278 Coq.Arith.PeanoNat <> ::nat_scope:x_'<=?'_x not
+R1274:1278 Coq.Arith.PeanoNat <> ::nat_scope:x_'<=?'_x not
+R1309:1318 paa_2021_2_coq <> sorted_all constr
+R1309:1318 paa_2021_2_coq <> sorted_all constr
+R1342:1351 Coq.Arith.PeanoNat Nat leb_gt thm
+R1342:1351 Coq.Arith.PeanoNat Nat leb_gt thm
+R1382:1391 Coq.Arith.PeanoNat Nat leb_le thm
+R1382:1391 Coq.Arith.PeanoNat Nat leb_le thm
+R1415:1428 Coq.Arith.PeanoNat Nat lt_le_incl thm
+R1415:1428 Coq.Arith.PeanoNat Nat lt_le_incl thm
+R1479:1488 paa_2021_2_coq <> sorted_all constr
+R1479:1488 paa_2021_2_coq <> sorted_all constr
+R1643:1652 paa_2021_2_coq <> sorted_all constr
+R1643:1652 paa_2021_2_coq <> sorted_all constr
+def 1825:1836 <> ord_insercao
+binder 1838:1838 <> l:13
+R1851:1851 paa_2021_2_coq <> l:13 var
+R1862:1864 Coq.Init.Datatypes <> nil constr
+R1869:1871 Coq.Init.Datatypes <> nil constr
+R1878:1881 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R1888:1893 paa_2021_2_coq <> insere def
+R1898:1909 paa_2021_2_coq <> ord_insercao:14 def
+R1940:1951 paa_2021_2_coq <> ord_insercao def
+R1955:1956 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R1958:1959 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R1961:1962 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R1963:1965 Coq.Init.Datatypes <> nil constr
+prf 1977:2003 <> ord_insercao_preserva_ordem
+binder 2013:2013 <> l:16
+R2016:2021 paa_2021_2_coq <> sorted ind
+R2024:2035 paa_2021_2_coq <> ord_insercao def
+R2037:2037 paa_2021_2_coq <> l:16 var
+R2084:2093 paa_2021_2_coq <> sorted_nil constr
+R2084:2093 paa_2021_2_coq <> sorted_nil constr
+R2117:2137 paa_2021_2_coq <> insere_preserva_ordem thm
+R2117:2137 paa_2021_2_coq <> insere_preserva_ordem thm
+R3403:3413 Coq.Sorting.Permutation <> <> lib
+R3422:3432 Coq.Sorting.Permutation <> Permutation ind
+prf 3442:3459 <> Permutation_insere
+binder 3469:3469 <> l:17
+binder 3471:3471 <> a:18
+R3474:3484 Coq.Sorting.Permutation <> Permutation ind
+R3496:3501 paa_2021_2_coq <> insere def
+R3503:3503 paa_2021_2_coq <> a:18 var
+R3505:3505 paa_2021_2_coq <> l:17 var
+R3488:3491 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R3487:3487 paa_2021_2_coq <> a:18 var
+R3492:3492 paa_2021_2_coq <> l:17 var
+R3567:3582 Coq.Sorting.Permutation <> Permutation_refl thm
+R3567:3582 Coq.Sorting.Permutation <> Permutation_refl thm
+R3627:3631 Coq.Arith.PeanoNat <> ::nat_scope:x_'<=?'_x not
+R3627:3631 Coq.Arith.PeanoNat <> ::nat_scope:x_'<=?'_x not
+R3648:3663 Coq.Sorting.Permutation <> Permutation_refl thm
+R3648:3663 Coq.Sorting.Permutation <> Permutation_refl thm
+R3696:3697 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R3700:3701 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R3678:3687 Coq.Sorting.Permutation <> perm_trans constr
+R3696:3697 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R3700:3701 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R3678:3687 Coq.Sorting.Permutation <> perm_trans constr
+R3720:3728 Coq.Sorting.Permutation <> perm_swap constr
+R3720:3728 Coq.Sorting.Permutation <> perm_swap constr
+R3745:3753 Coq.Sorting.Permutation <> perm_skip constr
+R3745:3753 Coq.Sorting.Permutation <> perm_skip constr
+prf 3789:3811 <> Permutation_insere_diff
+binder 3821:3821 <> l:19
+binder 3823:3824 <> l':20
+binder 3826:3826 <> a:21
+R3845:3848 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3829:3839 Coq.Sorting.Permutation <> Permutation ind
+R3843:3844 paa_2021_2_coq <> l':20 var
+R3841:3841 paa_2021_2_coq <> l:19 var
+R3849:3859 Coq.Sorting.Permutation <> Permutation ind
+R3871:3876 paa_2021_2_coq <> insere def
+R3878:3878 paa_2021_2_coq <> a:21 var
+R3880:3881 paa_2021_2_coq <> l':20 var
+R3863:3866 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R3862:3862 paa_2021_2_coq <> a:21 var
+R3867:3867 paa_2021_2_coq <> l:19 var
+R3932:3949 paa_2021_2_coq <> Permutation_insere thm
+R3932:3949 paa_2021_2_coq <> Permutation_insere thm
+prf 3964:3987 <> ord_insercao_Permutation
+binder 3997:3997 <> l:22
+R4000:4010 Coq.Sorting.Permutation <> Permutation ind
+R4015:4026 paa_2021_2_coq <> ord_insercao def
+R4028:4028 paa_2021_2_coq <> l:22 var
+R4012:4012 paa_2021_2_coq <> l:22 var
+R4075:4082 Coq.Sorting.Permutation <> perm_nil constr
+R4075:4082 Coq.Sorting.Permutation <> perm_nil constr
+R4106:4128 paa_2021_2_coq <> Permutation_insere_diff thm
+R4106:4128 paa_2021_2_coq <> Permutation_insere_diff thm
+prf 4162:4182 <> correcao_ord_insercao
+binder 4192:4192 <> l:23
+R4218:4221 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R4195:4200 paa_2021_2_coq <> sorted ind
+R4203:4214 paa_2021_2_coq <> ord_insercao def
+R4216:4216 paa_2021_2_coq <> l:23 var
+R4222:4232 Coq.Sorting.Permutation <> Permutation ind
+R4237:4248 paa_2021_2_coq <> ord_insercao def
+R4250:4250 paa_2021_2_coq <> l:23 var
+R4234:4234 paa_2021_2_coq <> l:23 var
+R4289:4315 paa_2021_2_coq <> ord_insercao_preserva_ordem thm
+R4289:4315 paa_2021_2_coq <> ord_insercao_preserva_ordem thm
+R4328:4351 paa_2021_2_coq <> ord_insercao_Permutation thm
+R4328:4351 paa_2021_2_coq <> ord_insercao_Permutation thm
+def 4369:4374 <> num_oc
+binder 4376:4376 <> x:24
+binder 4378:4378 <> l:25
+R4389:4389 paa_2021_2_coq <> l:25 var
+R4421:4423 Coq.Init.Datatypes <> nil constr
+R4456:4457 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R4469:4472 Coq.Arith.PeanoNat <> ::nat_scope:x_'=?'_x not
+R4468:4468 paa_2021_2_coq <> x:24 var
+R4501:4506 paa_2021_2_coq <> num_oc:26 def
+R4508:4508 paa_2021_2_coq <> x:24 var
+R4481:4481 Coq.Init.Datatypes <> S constr
+R4483:4488 paa_2021_2_coq <> num_oc:26 def
+R4490:4490 paa_2021_2_coq <> x:24 var
+R4559:4564 paa_2021_2_coq <> num_oc def
+R4570:4571 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R4573:4574 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R4576:4577 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R4579:4580 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R4582:4583 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R4584:4586 Coq.Init.Datatypes <> nil constr
+def 4603:4607 <> perm'
+binder 4609:4609 <> l:28
+binder 4611:4612 <> l':29
+binder 4624:4624 <> x:30
+R4637:4639 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R4627:4632 paa_2021_2_coq <> num_oc def
+R4634:4634 paa_2021_2_coq <> x:30 var
+R4636:4636 paa_2021_2_coq <> l:28 var
+R4640:4645 paa_2021_2_coq <> num_oc def
+R4647:4647 paa_2021_2_coq <> x:30 var
+R4649:4650 paa_2021_2_coq <> l':29 var
+prf 4660:4672 <> num_oc_insere
+binder 4682:4682 <> l:31
+binder 4684:4685 <> l':32
+binder 4687:4687 <> x:33
+binder 4689:4689 <> a:34
+R4702:4705 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R4692:4696 paa_2021_2_coq <> perm' def
+R4698:4698 paa_2021_2_coq <> l:31 var
+R4700:4701 paa_2021_2_coq <> l':32 var
+R4706:4706 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R4752:4757 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R4711:4714 Coq.Arith.PeanoNat <> ::nat_scope:x_'=?'_x not
+R4710:4710 paa_2021_2_coq <> x:33 var
+R4715:4715 paa_2021_2_coq <> a:34 var
+R4742:4747 paa_2021_2_coq <> num_oc def
+R4749:4749 paa_2021_2_coq <> x:33 var
+R4751:4751 paa_2021_2_coq <> l:31 var
+R4722:4722 Coq.Init.Datatypes <> S constr
+R4725:4730 paa_2021_2_coq <> num_oc def
+R4732:4732 paa_2021_2_coq <> x:33 var
+R4734:4734 paa_2021_2_coq <> l:31 var
+R4758:4763 paa_2021_2_coq <> num_oc def
+R4765:4765 paa_2021_2_coq <> x:33 var
+R4768:4773 paa_2021_2_coq <> insere def
+R4775:4775 paa_2021_2_coq <> a:34 var
+R4777:4778 paa_2021_2_coq <> l':32 var
+prf 4963:4980 <> ord_insercao_perm'
+binder 4990:4990 <> l:35
+R4993:4997 paa_2021_2_coq <> perm' def
+R4999:4999 paa_2021_2_coq <> l:35 var
+R5002:5013 paa_2021_2_coq <> ord_insercao def
+R5015:5015 paa_2021_2_coq <> l:35 var
+R5063:5067 paa_2021_2_coq <> perm' def
+R5122:5126 paa_2021_2_coq <> perm' def
+R5168:5180 paa_2021_2_coq <> num_oc_insere prfax
+R5168:5180 paa_2021_2_coq <> num_oc_insere prfax
+R5194:5198 paa_2021_2_coq <> perm' def
+prf 5355:5379 <> Permutation_implica_perm'
+binder 5389:5389 <> l:36
+binder 5391:5392 <> l':37
+R5411:5414 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R5395:5405 Coq.Sorting.Permutation <> Permutation ind
+R5409:5410 paa_2021_2_coq <> l':37 var
+R5407:5407 paa_2021_2_coq <> l:36 var
+R5415:5419 paa_2021_2_coq <> perm' def
+R5421:5421 paa_2021_2_coq <> l:36 var
+R5423:5424 paa_2021_2_coq <> l':37 var
+prf 5600:5608 <> perm'_nil
+binder 5618:5618 <> l:38
+R5632:5635 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R5621:5625 paa_2021_2_coq <> perm' def
+R5627:5629 Coq.Init.Datatypes <> nil constr
+R5631:5631 paa_2021_2_coq <> l:38 var
+R5637:5639 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R5636:5636 paa_2021_2_coq <> l:38 var
+R5640:5642 Coq.Init.Datatypes <> nil constr
+prf 5711:5722 <> perm'_exists
+binder 5732:5732 <> l:39
+binder 5734:5735 <> l':40
+binder 5737:5737 <> a:41
+R5757:5760 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R5740:5744 paa_2021_2_coq <> perm' def
+R5748:5751 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R5747:5747 paa_2021_2_coq <> a:41 var
+R5752:5752 paa_2021_2_coq <> l:39 var
+R5755:5756 paa_2021_2_coq <> l':40 var
+R5761:5767 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R5773:5774 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+binder 5768:5769 <> l1:42
+binder 5771:5772 <> l2:43
+R5777:5779 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R5775:5776 paa_2021_2_coq <> l':40 var
+R5782:5783 Coq.Init.Datatypes <> ::list_scope:x_'++'_x not
+R5780:5781 paa_2021_2_coq <> l1:42 var
+R5785:5786 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R5784:5784 paa_2021_2_coq <> a:41 var
+R5787:5788 paa_2021_2_coq <> l2:43 var
+prf 5819:5843 <> perm'_implica_Permutation
+binder 5853:5853 <> l:44
+binder 5855:5856 <> l':45
+R5869:5872 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R5859:5863 paa_2021_2_coq <> perm' def
+R5865:5865 paa_2021_2_coq <> l:44 var
+R5867:5868 paa_2021_2_coq <> l':45 var
+R5873:5883 Coq.Sorting.Permutation <> Permutation ind
+R5887:5888 paa_2021_2_coq <> l':45 var
+R5885:5885 paa_2021_2_coq <> l:44 var
+R5940:5948 paa_2021_2_coq <> perm'_nil prfax
+R5940:5948 paa_2021_2_coq <> perm'_nil prfax
+R5977:5984 Coq.Sorting.Permutation <> perm_nil constr
+R5977:5984 Coq.Sorting.Permutation <> perm_nil constr
+R6076:6087 paa_2021_2_coq <> perm'_exists prfax
+R6076:6087 paa_2021_2_coq <> perm'_exists prfax
+prf 6159:6181 <> Permutation_equiv_perm'
+binder 6191:6191 <> l:46
+binder 6193:6194 <> l':47
+R6213:6217 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R6197:6207 Coq.Sorting.Permutation <> Permutation ind
+R6211:6212 paa_2021_2_coq <> l':47 var
+R6209:6209 paa_2021_2_coq <> l:46 var
+R6218:6222 paa_2021_2_coq <> perm' def
+R6224:6224 paa_2021_2_coq <> l:46 var
+R6226:6227 paa_2021_2_coq <> l':47 var
+R6271:6295 paa_2021_2_coq <> Permutation_implica_perm' prfax
+R6271:6295 paa_2021_2_coq <> Permutation_implica_perm' prfax
+R6308:6332 paa_2021_2_coq <> perm'_implica_Permutation prfax
+R6308:6332 paa_2021_2_coq <> perm'_implica_Permutation prfax
+def 6432:6439 <> T_insere
+R6445:6447 Coq.Init.Datatypes <> nat ind
+binder 6442:6442 <> x:48
+R6454:6457 Coq.Init.Datatypes <> list ind
+R6459:6461 Coq.Init.Datatypes <> nat ind
+binder 6451:6451 <> l:49
+R6466:6468 Coq.Init.Datatypes <> nat ind
+R6479:6479 paa_2021_2_coq <> l:49 var
+R6488:6490 Coq.Init.Datatypes <> nil constr
+R6500:6503 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R6515:6519 Coq.Arith.PeanoNat <> ::nat_scope:x_'<=?'_x not
+R6514:6514 paa_2021_2_coq <> x:48 var
+R6535:6535 Coq.Init.Datatypes <> S constr
+R6538:6545 paa_2021_2_coq <> T_insere:50 def
+R6547:6547 paa_2021_2_coq <> x:48 var
+R6574:6576 Coq.micromega.Lia <> <> lib
+prf 6586:6600 <> T_insere_linear
+binder 6610:6610 <> l:52
+binder 6612:6612 <> x:53
+R6627:6630 Coq.Init.Peano <> ::nat_scope:x_'<='_x not
+R6615:6622 paa_2021_2_coq <> T_insere def
+R6624:6624 paa_2021_2_coq <> x:53 var
+R6626:6626 paa_2021_2_coq <> l:52 var
+R6631:6636 Coq.Init.Datatypes <> length def
+R6638:6638 paa_2021_2_coq <> l:52 var
+R6738:6742 Coq.Arith.PeanoNat <> ::nat_scope:x_'<=?'_x not
+R6738:6742 Coq.Arith.PeanoNat <> ::nat_scope:x_'<=?'_x not
+R6759:6764 Coq.Arith.Le <> le_n_S thm
+R6759:6764 Coq.Arith.Le <> le_n_S thm
+R6790:6795 Coq.Arith.Le <> le_n_S thm
+R6790:6795 Coq.Arith.Le <> le_n_S thm
+def 6830:6833 <> T_is
+R6839:6842 Coq.Init.Datatypes <> list ind
+R6844:6846 Coq.Init.Datatypes <> nat ind
+binder 6836:6836 <> l:54
+R6851:6853 Coq.Init.Datatypes <> nat ind
+R6864:6864 paa_2021_2_coq <> l:54 var
+R6873:6875 Coq.Init.Datatypes <> nil constr
+R6885:6886 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R6893:6893 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R6901:6905 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R6934:6934 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R6894:6897 paa_2021_2_coq <> T_is:55 def
+R6906:6913 paa_2021_2_coq <> T_insere def
+R6918:6929 paa_2021_2_coq <> ord_insercao def
+prf 6948:6966 <> ord_insercao_length
+binder 6976:6976 <> l:57
+R7002:7004 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R6979:6984 Coq.Init.Datatypes <> length def
+R6987:6998 paa_2021_2_coq <> ord_insercao def
+R7000:7000 paa_2021_2_coq <> l:57 var
+R7005:7010 Coq.Init.Datatypes <> length def
+R7012:7012 paa_2021_2_coq <> l:57 var
+prf 7041:7049 <> T_is_quad
+binder 7059:7059 <> l:58
+R7068:7071 Coq.Init.Peano <> ::nat_scope:x_'<='_x not
+R7062:7065 paa_2021_2_coq <> T_is def
+R7067:7067 paa_2021_2_coq <> l:58 var
+R7072:7072 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R7081:7083 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R7092:7092 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R7073:7078 Coq.Init.Datatypes <> length def
+R7080:7080 paa_2021_2_coq <> l:58 var
+R7084:7089 Coq.Init.Datatypes <> length def
+R7091:7091 paa_2021_2_coq <> l:58 var
+R7195:7197 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R7174:7174 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R7183:7185 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R7194:7194 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R7175:7180 Coq.Init.Datatypes <> length def
+R7186:7191 Coq.Init.Datatypes <> length def
+R7198:7203 Coq.Init.Datatypes <> length def
+R7206:7217 paa_2021_2_coq <> ord_insercao def
+R7159:7166 Coq.Arith.Le <> le_trans syndef
+R7195:7197 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R7174:7174 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R7183:7185 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R7194:7194 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R7175:7180 Coq.Init.Datatypes <> length def
+R7186:7191 Coq.Init.Datatypes <> length def
+R7198:7203 Coq.Init.Datatypes <> length def
+R7206:7217 paa_2021_2_coq <> ord_insercao def
+R7159:7166 Coq.Arith.Le <> le_trans syndef
+R7236:7250 Coq.Arith.PeanoNat Nat add_le_mono thm
+R7236:7250 Coq.Arith.PeanoNat Nat add_le_mono thm
+R7286:7300 paa_2021_2_coq <> T_insere_linear thm
+R7286:7300 paa_2021_2_coq <> T_insere_linear thm
+R7317:7335 paa_2021_2_coq <> ord_insercao_length prfax
+R7317:7335 paa_2021_2_coq <> ord_insercao_length prfax
+R7317:7335 paa_2021_2_coq <> ord_insercao_length prfax
+def 7397:7405 <> Tw_insere
+R7410:7412 Coq.Init.Datatypes <> nat ind
+binder 7408:7408 <> n:59
+R7426:7426 paa_2021_2_coq <> n:59 var
+R7448:7448 Coq.Init.Datatypes <> S constr
+R7455:7455 Coq.Init.Datatypes <> S constr
+R7458:7466 paa_2021_2_coq <> Tw_insere:60 def
+prf 7485:7500 <> Tw_insere_linear
+binder 7510:7510 <> n:62
+R7524:7526 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R7513:7521 paa_2021_2_coq <> Tw_insere def
+R7523:7523 paa_2021_2_coq <> n:62 var
+R7527:7527 paa_2021_2_coq <> n:62 var
+def 7640:7644 <> Tw_is
+R7650:7652 Coq.Init.Datatypes <> nat ind
+binder 7647:7647 <> n:63
+R7666:7666 paa_2021_2_coq <> n:63 var
+R7688:7688 Coq.Init.Datatypes <> S constr
+R7696:7698 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R7699:7703 paa_2021_2_coq <> Tw_is:64 def
+prf 7776:7785 <> Tw_is_quad
+binder 7795:7795 <> n:66
+R7813:7815 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R7799:7801 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R7802:7806 paa_2021_2_coq <> Tw_is def
+R7809:7809 Coq.Init.Datatypes <> S constr
+R7811:7811 paa_2021_2_coq <> n:66 var
+R7817:7820 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R7824:7824 Coq.Init.Peano <> ::nat_scope:x_'*'_x not
+R7816:7816 paa_2021_2_coq <> n:66 var
+R7821:7821 Coq.Init.Datatypes <> S constr
+R7823:7823 paa_2021_2_coq <> n:66 var

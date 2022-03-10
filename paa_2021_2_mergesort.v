@@ -100,4 +100,3 @@ Admitted.
 Theorem T_mergesort_complexity: forall l k, length l = 2^k -> T_mergesort l <= k * 2^k.
 Proof.
 Admitted.
-
