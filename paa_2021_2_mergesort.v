@@ -54,15 +54,73 @@ Require Import paa_2021_2_coq.
 
 (** Prova da correção *)
 
+Lemma imp_and: forall a b c: Prop, (a -> b -> c) <-> ((a /\ b) -> c).
+Proof.
+  intros a b c; split.
+  - intros H.
+    intro H1.
+    apply H.
+    + apply H1.
+    + destruct H1.
+      assumption.
+  - intro H.
+    intros Ha Hb.
+    apply H.
+    split; assumption.
+Qed.
+    
+Lemma merge_sorts: forall l1 l2, sorted l1 -> sorted l2 -> sorted(merge(l1,l2)).
+Proof.
+  intros l1 l2.
+  remember (l1,l2) as l_par.
+  functional induction (merge(l_par)).
+  - intros H1 H2.
+    inversion Heql_par.
+    assumption.
+  - admit.
+  - intros H1 H2.
+    case tl1 eqn:H.
+    + admit.
+    + admit.
+  - Admitted.
+  
 Theorem mergesort_sorts: forall l, sorted (mergesort l).
 Proof.
+  intro l.
+  functional induction (mergesort l).
+  - admit.
+  - admit.
+  - apply merge_sorts; assumption.    
  Admitted.
 
 
 Require Import Permutation.
 
+Lemma app_merge: forall l1 l2, Permutation (l1++l2) (merge(l1,l2)).
+Proof.
+  Admitted.
+
+Lemma Permutation_merge: forall l1 l2 l1' l2', Permutation l1 l1' -> Permutation l2 l2' -> Permutation (merge(l1,l2)) (merge(l1',l2')).
+Proof.
+Admitted.
 
 Theorem mergesort_is_perm: forall l, Permutation l (mergesort l).
+Proof.
+  intro l.
+  functional induction (mergesort l).
+  - admit.
+  - admit.
+  - pose proof firstn_skipn.
+    specialize (H nat (length (h :: tl) / 2) (h::tl)).
+    rewrite <- H at 1.
+    apply Permutation_trans with (merge ((firstn (length (h :: tl) / 2) (h :: tl)), (skipn (length (h :: tl) / 2) (h :: tl)))).
+    + apply app_merge.
+    + apply Permutation_merge.
+      * apply IHl0.
+      * apply IHl1.    
+ Admitted.
+
+Theorem mergesort_is_perm': forall l, perm' l (mergesort l).
 Proof.
  Admitted.
 
