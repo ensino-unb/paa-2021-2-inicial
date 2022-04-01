@@ -68,8 +68,41 @@ Proof.
     apply H.
     split; assumption.
 Qed.
-    
+
 Lemma merge_sorts: forall l1 l2, sorted l1 -> sorted l2 -> sorted(merge(l1,l2)).
+Proof.
+  intros l1 l2.
+  remember (l1,l2) as l_pair.
+  generalize dependent l2.
+  generalize dependent l1.
+  functional induction (merge l_pair).
+  - admit.
+  - admit.
+  - intros l1 l2 Heq H1 H2.
+    case tl1 eqn:Htl1.
+    + rewrite merge_equation.
+      apply sorted_all.
+      * assumption.
+      * inversion Heq; subst.
+        assumption.
+    + rewrite merge_equation in *.
+      destruct (n <=? hd2) eqn:Hle.
+      * apply sorted_all.
+        ** inversion Heq; subst.
+           inversion H1; subst.
+           assumption.
+        ** apply (IHl (n::l) (hd2::tl2)).
+           *** reflexivity.
+           *** inversion Heq; subst.
+               inversion H1; subst.
+               assumption.
+           *** inversion Heq; subst.
+               inversion H2; subst.
+               **** assumption.
+               **** apply sorted_all; assumption.
+      * Admitted.
+  
+Lemma merge_sorts': forall l1 l2, sorted l1 -> sorted l2 -> sorted(merge(l1,l2)).
 Proof.
   induction l1.
   - intros l2 Hnil Hl2.
@@ -101,7 +134,26 @@ Proof.
                     ***** inversion H1; subst.
                           assumption.
                     ***** assumption.
-      * Admitted.
+      * case l2 eqn:Hl2.
+        ** rewrite merge_equation.
+           apply sorted_all.
+           *** admit.
+           *** assumption.
+        ** rewrite merge_equation in *.
+           destruct (a <=? n) eqn:Hle.
+           *** apply sorted_all.
+               **** admit.
+               **** apply IHl2.
+                    ***** assumption.
+                    ***** inversion H2; subst.
+                          assumption.
+           *** apply sorted_all.
+               **** admit.
+               **** apply IHl2.
+                    ***** assumption.
+                    ***** inversion H2; subst.
+                          assumption.
+Admitted.
         
         
 Theorem mergesort_sorts: forall l, sorted (mergesort l).
