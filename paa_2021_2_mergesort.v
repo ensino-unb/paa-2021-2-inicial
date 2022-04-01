@@ -71,19 +71,39 @@ Qed.
     
 Lemma merge_sorts: forall l1 l2, sorted l1 -> sorted l2 -> sorted(merge(l1,l2)).
 Proof.
-  intros l1 l2.
-  remember (l1,l2) as l_par.
-  functional induction (merge(l_par)).
-  - intros H1 H2.
-    inversion Heql_par.
+  induction l1.
+  - intros l2 Hnil Hl2.
+    rewrite merge_equation.
     assumption.
-  - admit.
-  - intros H1 H2.
-    case tl1 eqn:H.
-    + admit.
-    + admit.
-  - Admitted.
-  
+  - induction l2.
+    + intros H1 Hnil.
+      rewrite merge_equation.
+      assumption.
+    + intros H1 H2.
+      rewrite merge_equation.
+      destruct (a <=? a0) eqn: H.
+      * case l1 eqn:Hl1.
+        ** rewrite merge_equation.
+           apply sorted_all; assumption.
+        ** pose proof (IHl1 (a0::l2)).
+          rewrite merge_equation in *.
+           destruct (n <=? a0) eqn:Hle.
+           *** apply sorted_all.
+               **** inversion H1; subst.
+                    assumption.
+               **** apply H0.
+                    ***** inversion H1; subst.
+                          assumption.
+                    ***** assumption.
+           *** apply sorted_all.
+               **** assumption.
+               **** apply H0.
+                    ***** inversion H1; subst.
+                          assumption.
+                    ***** assumption.
+      * Admitted.
+        
+        
 Theorem mergesort_sorts: forall l, sorted (mergesort l).
 Proof.
   intro l.
